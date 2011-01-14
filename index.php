@@ -33,12 +33,10 @@ if ("tag" == $_GET['action'])
 <?php
 //END FORM
 //DISPLAY
-
-//END DISPLAY
 foreach($entxml->entry as $entry)
 {
 	echo "<p>entry: ".$entry->text."</p>\n";
 	echo "<p>date: ".$entry->date."</p>\n";
 }
-
+//END DISPLAY
 ?>
