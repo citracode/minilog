@@ -2,4 +2,7 @@ Project:
 minilog
 
 Summary:
-Stuff
+A very lightweight, private web log script written in php. Entries are stored in XML. Supports tags, mobile.
+
+Contributors:
+Tim Habersack (citracode)
