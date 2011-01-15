@@ -1,24 +1,32 @@
 <?php
+//FUNCTIONS
+
+//END FUNCTIONS
 //CONFIG
 $entryxml = 'testentries.xml';
 $tagxml = 'tag.xml';
 $dateformat = "Y.m.d H:i:s"; //must use php date format: http://www.php.net/manual/en/function.date.php
-if (!file_exists($entryxml)) exit("Failed to open $entryxml.");
-$entxml = simplexml_load_file($entryxml);
-//if (!file_exists($tagxml)) exit("Failed to open $tagxml.");
-//$tagxml = simplexml_load_file($tagxml);
+//open xml
+
+$entxml = simplexml_load_file($entryxml) or die("Failed opening $entryxml: error was '$php_errormsg'"); ;
+//$tagxml = simplexml_load_file($tagxml) or die("Failed opening $tagxml: error was '$php_errormsg'"); ;;
 //END CONFIG
-
-//FUNCTIONS
-
-//END FUNCTIONS
-
 //PROCESSING
 if ("add" == $_GET['action'])
 {
-	 echo "woo add";
+	echo "woo add";
+	$newentry = $entxml->addChild('entry');
+	$newentry->addChild('text',$_POST['entrytext']);
+	$newentry->addChild('date',date($dateformat));
+	$dom = new DOMDocument('1.0');
+	$dom->preserveWhiteSpace = false;
+	$dom->formatOutput = true;
+	$dom->loadXML($entxml->asXML());
+	//Save XML to file - remove this and following line if save not desired
+	$dom->save($entryxml);
+
 }
-if ("tag" == $_GET['action'])
+if ("tag" == $_GET['action'] && isset($_GET['tag']))
 {
 	 echo "woo tag";
 }

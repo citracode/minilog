@@ -6,3 +6,6 @@ A very lightweight, private web log script written in php. Entries are stored in
 
 Contributors:
 Tim Habersack (citracode)
+
+TODO:
+-Use a for loop, with count of entries to reverse print it out

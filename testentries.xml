@@ -1,11 +1,31 @@
-<?xml version='1.0' standalone='yes'?>
+<?xml version="1.0" standalone="yes"?>
 <entries>
-	<entry>
-		<text>This is my first test entry, #ohya</text>
-		<date>2010.01.13 20:00:00</date>
-	</entry>
-	<entry>
-		<text>This is another entry, #boosh #fun #ohya</text>
-		<date>2010.01.14 07:00:00</date>
-	</entry>
+  <entry>
+    <text>Just one more, then it's time to pack up for roadtrip.</text>
+    <date>2011.01.14 20:39:03</date>
+  </entry>
+  <entry>
+    <text>Another one to go first, hopefully without error. #ohya</text>
+    <date>2011.01.14 20:36:54</date>
+  </entry>
+  <entry>
+    <text>okay, this should go first now. #fun</text>
+    <date>2011.01.14 20:35:53</date>
+  </entry>
+  <entry>
+    <text>This is my first test entry, #ohya</text>
+    <date>2010.01.13 20:00:00</date>
+  </entry>
+  <entry>
+    <text>This is another entry, #boosh #fun #ohya</text>
+    <date>2010.01.14 07:00:00</date>
+  </entry>
+  <entry>
+    <text>come on you fetcher, work. #ohya</text>
+    <date>2011.01.14 20:25:09</date>
+  </entry>
+  <entry>
+    <text>Okay, making sure i didn't break you. Please say no!</text>
+    <date>2011.01.14 20:42:00</date>
+  </entry>
 </entries>
