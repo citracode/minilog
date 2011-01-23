@@ -5,12 +5,7 @@
 </head>
 <body>
 <?php
-//FUNCTIONS
-function tagit($entry)
-{
 
-}
-//END FUNCTIONS
 //CONFIG
 $entryxml = 'testentries.xml';
 $tagxmlfile = 'tag.xml';
@@ -18,9 +13,29 @@ $dateformat = "Y.m.d H:i:s"; //must use php date format: http://www.php.net/manu
 $viewingtags[0]=-1;
 //open xml
 
-$entxml = simplexml_load_file($entryxml) or die("Failed opening $entryxml: error was '$php_errormsg'"); ;
+$entxml = simplexml_load_file($entryxml) or die("Failed opening $entryxml: error was '$php_errormsg'");
 $tagxml = simplexml_load_file($tagxmlfile) or die("Failed opening $tagxmlfile: error was '$php_errormsg'");
 //END CONFIG
+//FUNCTIONS
+function tagit($passedtagxml,$entry,$entryid)
+{
+	preg_match_all('/(^|\s)#(\w+)/',$entry,$tags);
+	foreach($tags[2] as $tag)
+	{
+		if($passedtagxml->$tag)
+		{
+			//echo "\ntag $tag already exists!\n";
+			$passedtagxml->$tag->addChild('index',$entryid);
+		}
+		else
+		{
+			//echo "\ntag $tag is new!\n";
+			$passedtagxml->addChild($tag);
+			$passedtagxml->$tag->addChild('index',$entryid);				
+		}
+	}
+}
+//END FUNCTIONS
 //PROCESSING
 if ("add" == $_GET['action']) //adding an entry to xml
 {
@@ -37,36 +52,17 @@ if ("add" == $_GET['action']) //adding an entry to xml
 		$dom->preserveWhiteSpace = false;
 		$dom->formatOutput = true;
 		$dom->loadXML($entxml->asXML());
-		//Save XML to file - remove this and following line if save not desired
 		$dom->save($entryxml);
 	
 		//begin processing for tags
 		$tagcount = substr_count($_POST['entrytext'], '#');
 		if($tagcount > 0)
 		{
-			//echo "woo add, and there are $tagcount tags in here.";
-			preg_match_all('/(^|\s)#(\w+)/',$_POST['entrytext'],$tags);
-			foreach($tags[2] as $tag)
-			{
-				if($tagxml->$tag)
-				{
-					//echo "\ntag $tag already exists!\n";
-					$tagxml->$tag->addChild('index',($dom->getElementsByTagName("entry")->length-1));
-				}
-				else
-				{
-					//echo "\ntag $tag is new!\n";
-					$tagxml->addChild($tag);
-					$tagxml->$tag->addChild('index',($dom->getElementsByTagName("entry")->length-1));
-				
-				
-				}
-			}
+			tagit($tagxml,$_POST['entrytext'],$dom->getElementsByTagName("entry")->length-1);			
 			$dom = new DOMDocument('1.0');
 			$dom->preserveWhiteSpace = false;
 			$dom->formatOutput = true;
 			$dom->loadXML($tagxml->asXML());
-			//Save XML to file - remove this and following line if save not desired
 			$dom->save($tagxmlfile);		
 		}
 	}
@@ -91,8 +87,9 @@ if ("viewtags" == $_GET['action'])  //if usr wants to see all tags
 		{
 			$count++;
 		}
-		$tagarray[$arcount]['name']=$tag->getName();
+		
 		$tagarray[$arcount]['num']=$count;
+		$tagarray[$arcount]['name']=$tag->getName();
 		$arcount++;
 	}
 	rsort($tagarray);
