@@ -1,21 +1,37 @@
+<?php
+include 'config.php';
+//Before anything, verify if logged in
+if("login"==$_GET['action'])
+{
+	$uri = "index.php?auth=".md5($_POST['password']."minilog");
+	header("Location: $uri");
+}
+
+if(md5($password."minilog")!=$_GET['auth'])
+{
+echo "<html><head><title>Log in</title><meta name=\"viewport\" content=\"width=device-width\"></head><body>\n";
+echo "<form name=\"loginform\" action=\"index.php?action=login\" method=\"post\">\n";
+echo "<label for=\"entrytext\">Password:</label>\n";
+echo "<input type=\"password\" name=\"password\"></input><br />\n";
+echo "<input type=\"submit\" value=\"Log In\"/></form></body></html>";
+exit;
+}
+
+?>
+
 <html>
 <head>
 <title>minilog</title>
 <meta name="viewport" content="width=device-width"/> 
 </head>
 <body>
+
 <?php
-
-//CONFIG
-$entryxml = 'testentries.xml';
-$tagxmlfile = 'tag.xml';
-$dateformat = "Y.m.d H:i:s"; //must use php date format: http://www.php.net/manual/en/function.date.php
-$viewingtags[0]=-1;
 //open xml
-
 $entxml = simplexml_load_file($entryxml) or die("Failed opening $entryxml: error was '$php_errormsg'");
 $tagxml = simplexml_load_file($tagxmlfile) or die("Failed opening $tagxmlfile: error was '$php_errormsg'");
-//END CONFIG
+$viewingtags[0]=-1;
+
 //FUNCTIONS
 function tagit($passedtagxml,$entry,$entryid)
 {
@@ -78,7 +94,7 @@ if ("tag" == $_GET['action'] && isset($_GET['tag']))  //if viewing specific tag 
 }
 if ("viewtags" == $_GET['action'])  //if usr wants to see all tags
 {
-	$link="index.php?action=tag&tag=";
+	$link="index.php?auth=".$_GET['auth']."&action=tag&tag=";
 	$arcount=0;
 	foreach($tagxml->children() as $tag)
 	{
@@ -102,10 +118,10 @@ if ("viewtags" == $_GET['action'])  //if usr wants to see all tags
 	
 }
 //END PROCESSING
-//FORM
+//FORM 
 ?>
-<a href="index.php">Home</a> - <a href="index.php?action=viewtags">View Tags</a><br />
-<form name="entryform" action="index.php?action=add" method="post">
+<a href="index.php?auth=<?php echo $_GET['auth'];?>">Home</a> - <a href="index.php?auth=<?php echo $_GET['auth'];?>&action=viewtags">View Tags</a><br />
+<form name="entryform" action="index.php?auth=<?php echo $_GET['auth'];?>&action=add" method="post">
 <label for="entrytext">Entry:</label><br />
 <textarea name="entrytext" rows="5" cols="30"></textarea><br />
 <input type="submit" value="Add Entry"/>
