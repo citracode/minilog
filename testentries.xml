@@ -1,18 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
 <entries>
   <entry>
-    <text>Just one more, then it's time to pack up for roadtrip.</text>
-    <date>2011.01.14 20:39:03</date>
-  </entry>
-  <entry>
-    <text>Another one to go first, hopefully without error. #ohya</text>
-    <date>2011.01.14 20:36:54</date>
-  </entry>
-  <entry>
-    <text>okay, this should go first now. #fun</text>
-    <date>2011.01.14 20:35:53</date>
-  </entry>
-  <entry>
     <text>This is my first test entry, #ohya</text>
     <date>2010.01.13 20:00:00</date>
   </entry>
@@ -21,11 +9,19 @@
     <date>2010.01.14 07:00:00</date>
   </entry>
   <entry>
-    <text>come on you fetcher, work. #ohya</text>
-    <date>2011.01.14 20:25:09</date>
+    <text>Maybe i should have given #it the filename. #ohya</text>
+    <date>2011.01.18 12:42:41</date>
   </entry>
   <entry>
-    <text>Okay, making sure i didn't break you. Please say no!</text>
-    <date>2011.01.14 20:42:00</date>
+    <text>Opkay here we go with #another tag, and an #ohya for good measure.</text>
+    <date>2011.01.20 12:27:14</date>
+  </entry>
+  <entry>
+    <text>Hey this isn't even for testing, I'm just a huge #dork and want to see this work. :)</text>
+    <date>2011.01.21 12:44:11</date>
+  </entry>
+  <entry>
+    <text>Okay, and another one because #it rocks. #ohya</text>
+    <date>2011.01.21 13:04:46</date>
   </entry>
 </entries>
