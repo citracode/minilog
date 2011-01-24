@@ -7,5 +7,9 @@ A very lightweight, private web log script written in php. Entries are stored in
 Contributors:
 Tim Habersack (citracode)
 
+Setup:
+Use the config.php file and change the password to your desired password.  Also, for added security be sure to rename the two xml files, then make note of the changes in the config.php file.
+
 TODO:
--Use a for loop, with count of entries to reverse print it out
+-Use some minor CSS to pretty it up
+-Write install blurg
