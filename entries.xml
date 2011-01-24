@@ -1,27 +1,7 @@
 <?xml version="1.0" standalone="yes"?>
 <entries>
   <entry>
-    <text>This is my first test entry, #ohya</text>
+    <text>This is the first entry, #ohya</text>
     <date>2010.01.13 20:00:00</date>
-  </entry>
-  <entry>
-    <text>This is another entry, #boosh #fun #ohya</text>
-    <date>2010.01.14 07:00:00</date>
-  </entry>
-  <entry>
-    <text>Maybe i should have given #it the filename. #ohya</text>
-    <date>2011.01.18 12:42:41</date>
-  </entry>
-  <entry>
-    <text>Opkay here we go with #another tag, and an #ohya for good measure.</text>
-    <date>2011.01.20 12:27:14</date>
-  </entry>
-  <entry>
-    <text>Hey this isn't even for testing, I'm just a huge #dork and want to see this work. :)</text>
-    <date>2011.01.21 12:44:11</date>
-  </entry>
-  <entry>
-    <text>Okay, and another one because #it rocks. #ohya</text>
-    <date>2011.01.21 13:04:46</date>
   </entry>
 </entries>
